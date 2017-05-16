@@ -10,12 +10,12 @@ import java.util.List;
 /**
  * Created by Михаил on 2017-05-02.
  */
-public class UserDao implements UserDaoI {
+public class UserDaoImp implements UserDaoI {
 
 
     private Session session;
 
-    public UserDao(Session session) {
+    public UserDaoImp(Session session) {
         this.session = session;
     }
 

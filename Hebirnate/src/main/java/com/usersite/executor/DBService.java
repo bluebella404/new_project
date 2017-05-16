@@ -3,8 +3,8 @@ package com.usersite.executor;
 /**
  * Created by Михаил on 2017-05-16.
  */
+import com.usersite.dao.UserDaoImp;
 import com.usersite.models.User;
-import com.usersite.dao.UserDao;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -55,7 +55,7 @@ public class DBService {
     public List<User> getAllUsers() throws DBException {
         try {
             Session session = sessionFactory.openSession();
-            UserDao dao = new UserDao(session);
+            UserDaoImp dao = new UserDaoImp(session);
             List<User> users = dao.getAllUsers(User.class);
             session.close();
             return users;
@@ -67,7 +67,7 @@ public class DBService {
     public User getUser(int id) throws DBException {
         try {
             Session session = sessionFactory.openSession();
-            UserDao dao = new UserDao(session);
+            UserDaoImp dao = new UserDaoImp(session);
             User dataSet = dao.get(User.class, id);
             session.close();
             return dataSet;
@@ -80,7 +80,7 @@ public class DBService {
         try {
             Session session = sessionFactory.openSession();
             Transaction transaction = session.beginTransaction();
-            UserDao dao = new UserDao(session);
+            UserDaoImp dao = new UserDaoImp(session);
             dao.addUser(user);
             transaction.commit();
             session.close();
@@ -95,7 +95,7 @@ public class DBService {
         try {
             Session session = sessionFactory.openSession();
             Transaction transaction = session.beginTransaction();
-            UserDao dao = new UserDao(session);
+            UserDaoImp dao = new UserDaoImp(session);
             dao.deleteUser(User.class, id);
             transaction.commit();
             session.close();
@@ -109,7 +109,7 @@ public class DBService {
         try {
             Session session = sessionFactory.openSession();
             Transaction transaction = session.beginTransaction();
-            UserDao dao = new UserDao(session);
+            UserDaoImp dao = new UserDaoImp(session);
             dao.update(User.class, id, username, password, role);
             transaction.commit();
             session.close();
