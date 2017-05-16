@@ -17,6 +17,7 @@ import java.io.IOException;
 @WebServlet("/add")
 public class AddServlet extends HttpServlet {
 
+    private static final long serialVersionUID = 526017995537566452L;
     private DBService dbservice;
 
     public AddServlet() {
